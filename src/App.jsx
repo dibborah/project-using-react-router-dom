@@ -5,18 +5,20 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import Root from "./pages/Root";
+import Home from "./pages/Home";
+import SingleMovieDetail from "./pages/SingleMovieDetail";
+import { loader as movieLoader } from "./components/SearchForm";
 
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<h1>Parent Element</h1>}>
-        <Route path={"/"} element={<h1>Home Page</h1>} />
-        <Route path={"/about"} element={<h1>About Page</h1>} />
-        <Route path={"/contact"} element={<h1>Contact Page</h1>} />
+      <Route path="/" element={<Root />}>
+      <Route index element={<Home />} loader={movieLoader}/>
+      <Route path="/detail/:imdbId" element={<SingleMovieDetail />} />
       </Route>
     )
   );
-  console.log(apiKey);
   return (
     <RouterProvider router={router}>
       <h1>App</h1>
