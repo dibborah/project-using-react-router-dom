@@ -10,13 +10,14 @@ import Home from "./pages/Home";
 import SingleMovieDetail from "./pages/SingleMovieDetail";
 import ErrorPage from "./pages/ErrorPage.jsx"
 import { loader as movieLoader } from "./pages/Home.jsx";
+import {loader as singleMovieLoader} from "./pages/SingleMovieDetail.jsx"
 
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage/>}>
       <Route index element={<Home />} loader={movieLoader}/>
-      <Route path="/detail/:imdbId" element={<SingleMovieDetail />} />
+      <Route path="/detail/:imdbId" element={<SingleMovieDetail />} loader={singleMovieLoader}/>
       </Route>
     )
   );

@@ -1,3 +1,5 @@
+import MovieCard from "./MovieCard";
+
 const MovieList = ({ data }) => {
   const { movieApiResponse, isError, error } = data;
   // console.log(data);
@@ -11,7 +13,7 @@ const MovieList = ({ data }) => {
     <div>
       {movieApiResponse &&
         movieApiResponse.Search.map((movie) => {
-          return <h3 key={movie.imdbID}>{movie.Title}</h3>;
+          return <MovieCard key={movie.imdbID} {...movie} />
         })}
     </div>
   );
