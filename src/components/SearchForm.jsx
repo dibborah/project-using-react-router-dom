@@ -1,10 +1,14 @@
 import { Form } from "react-router-dom";
+import { apiKey } from "../contants";
+import axios from "axios";
 
-export const loader = ({ request }) => {
+export const loader = async ({ request }) => {
   const url = new URL(request.url);
   const searchParams = url.searchParams.get("search");
-  console.log(searchParams);
-  return null;
+  const response = await axios.get(
+    `http://www.omdbapi.com/?s=${searchParams}&apikey=${apiKey}`
+  );
+  return { movieApiResponse: response.data };
 };
 
 const SearchForm = () => {
