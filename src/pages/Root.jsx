@@ -1,10 +1,11 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigation } from "react-router-dom";
 
 const Root = () => {
+  const { state } = useNavigation();
   return (
     <nav>
       <Link to="/">Movie Search</Link>
-      <Outlet />
+      {state === "loading" ? <h1>Loading ...</h1> : <Outlet />}
     </nav>
   );
 };
