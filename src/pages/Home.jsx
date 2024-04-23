@@ -7,7 +7,7 @@ import axios from "axios";
 export const loader = async ({ request }) => {
   const url = new URL(request.url);
   const searchTerm = url.searchParams.get("search") || "marvel";
-  const movieSearchEndpoint = `http://www.omdbapi.com/?s=${searchTerm}&apikey=${apiKey}ZZZ`;
+  const movieSearchEndpoint = `http://www.omdbapi.com/?s=${searchTerm}&apikey=${apiKey}`;
   try {
     const response = await axios.get(movieSearchEndpoint);
     return {
