@@ -1,6 +1,7 @@
 import MovieCard from "./MovieCard";
+import styles from "./MoviesList.module.css";
 
-const MovieList = ({ data }) => {
+const MovieLists = ({ data }) => {
   const { movieApiResponse, isError, error } = data;
   // console.log(data);
   if (isError) {
@@ -10,13 +11,12 @@ const MovieList = ({ data }) => {
     return <h1>{movieApiResponse.Error || "Not Found Yet!!!"} </h1>;
   }
   return (
-    <div>
-      {movieApiResponse &&
-        movieApiResponse.Search.map((movie) => {
-          return <MovieCard key={movie.imdbID} {...movie} />
-        })}
+    <div className={`container ${styles.moviesList}`}>
+      {movieApiResponse.Search.map((movie) => {
+        return <MovieCard key={movie.imdbID} {...movie} />;
+      })}
     </div>
   );
 };
 
-export default MovieList;
+export default MovieLists;
