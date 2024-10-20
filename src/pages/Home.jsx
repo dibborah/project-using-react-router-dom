@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import MovieLists from "../components/MoviesList";
+import MovieList from "../components/MovieList";
 import SearchForm from "../components/SearchForm";
 import { apiKey } from "../contants";
 import axios from "axios";
@@ -35,7 +35,7 @@ const Home = () => {
   return (
     <div>
       <SearchForm searchTerm={data.searchTerm} />
-      <MovieLists data={data} />
+      <MovieList data={data} />
     </div>
   );
 };
